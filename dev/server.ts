@@ -1,6 +1,6 @@
-// import { readableStreamFromReader } from "https://deno.land/std@0.113.0/streams/conversion.ts";
+// import { readableStreamFromReader } from "https://deno.land/std@0.125.0/streams/conversion.ts";
 import { BuildProject } from "../commands/build.ts";
-import { join } from "https://deno.land/std@0.113.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
 import { Application, send, Router } from 'https://deno.land/x/oak@v9.0.1/mod.ts';
 
 export default async function devServer() {

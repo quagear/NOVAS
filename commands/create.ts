@@ -1,4 +1,4 @@
-import { join } from "https://deno.land/std@0.113.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
 import flags from "./flags.ts";
 import {
   indexHTML,

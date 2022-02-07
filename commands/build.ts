@@ -1,6 +1,6 @@
 import flags from "./flags.ts";
-import { ensureFile } from "https://deno.land/std@0.113.0/fs/mod.ts";
-import { join } from "https://deno.land/std@0.113.0/path/mod.ts";
+import { ensureFile } from "https://deno.land/std@0.125.0/fs/mod.ts";
+import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
 import { compiler } from "../compiler/compiler.ts";
 import boilerplate from "../templates/build.ts";
 import denofy from "../compiler/compiler.ts";
