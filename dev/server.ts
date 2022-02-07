@@ -1,11 +1,7 @@
-// import { readableStreamFromReader } from "https://deno.land/std@0.125.0/streams/conversion.ts";
+//
+// import { readableStreamFromReader } from "../deps.ts";
+import { Application, join, Router, send } from "../deps.ts";
 import { BuildProject } from "../commands/build.ts";
-import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
-import {
-  Application,
-  Router,
-  send,
-} from "https://deno.land/x/oak@v10.2.0/mod.ts";
 
 export default async function devServer() {
   const eventTypes: { [key: string]: boolean } = { remove: true, modify: true }; // Other option: create;

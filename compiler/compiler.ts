@@ -1,5 +1,4 @@
-import { compile } from "https://cdn.jsdelivr.net/npm/svelte@3.46.4/compiler.mjs";
-import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
+import { compile, join, sveltePath } from "../deps.ts";
 
 const getOptions = async () => {
   let options: { [key: string]: string | boolean };
@@ -11,7 +10,7 @@ const getOptions = async () => {
     // All options: https://svelte.dev/docs#svelte_compile
     options = {
       generate: "dom",
-      sveltePath: "https://cdn.skypack.dev/svelte@3.46.4",
+      sveltePath: sveltePath,
       hydratable: true,
     };
   }

@@ -1,3 +1,5 @@
+import { sveltePath } from "../deps.ts";
+
 export const indexHTML = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +15,7 @@ export const indexHTML = `<!DOCTYPE html>
   </body>
 </html>`;
 
-export const svelteAppComponent = `<script>
+export const svelteAppComponent = `<script lang="ts">
 let count = 0;
 
 function handleClick() {
@@ -22,9 +24,25 @@ function handleClick() {
 
 const resetCount = () => {
   count -= 1;
-}
-const src = 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+};
+
+const src =
+  "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
 </script>
+
+<div class="counter">
+  <p class="app-name">NOVAS</p>
+  <p>
+    You clicked {count}
+    {count === 1 ? "time" : "times"}
+  </p>
+  <button on:click={handleClick}> Increment count </button>
+  <button on:click={resetCount}> Decrement count </button>
+  <div class="github-container">
+    <img {src} alt="github logo" />
+    <a class="Github" href="https://github.com/NOVASland/NOVAS"> Github </a>
+  </div>
+</div>
 
 <style>
 :global(body) {
@@ -49,30 +67,7 @@ img {
   display: flex;
   align-items: center;
 }
-</style>
-
-<div class="counter">
-<p class="app-name">
-  NOVAS
-</p>
-<p>
-  You clicked {count} {count === 1 ? 'time' : 'times'}
-</p>
-<button  on:click={handleClick}>
-  Increment count
-</button>
-<button on:click={resetCount}>
-  Decrement count
-</button>
-<div class='github-container'>
-  <img {src} alt='github logo'>
-  <a class='Github' href='https://github.com/NOVASland/NOVAS'>
-    Github
-  </a>
-</div>
-
-</div>
-`;
+</style>`;
 
 export const mainJs =
   `// This is a placeholder for rendering the svelte files after running NOVA build in the root directory.`;
@@ -97,6 +92,6 @@ export const vscodeDenoSettings = `{
 
 export const defaultConfigFile = `{
     "generate": "dom",
-    "sveltePath": "https://cdn.skypack.dev/svelte@3.46.4",
-    "hydratable": true,
+    "sveltePath": "${sveltePath}",
+    "hydratable": true
   }`;

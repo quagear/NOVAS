@@ -1,6 +1,5 @@
+import { ensureFile, join, sveltePath } from "../deps.ts";
 import flags from "./flags.ts";
-import { ensureFile } from "https://deno.land/std@0.125.0/fs/mod.ts";
-import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
 import { compiler } from "../compiler/compiler.ts";
 import boilerplate from "../templates/build.ts";
 import denofy from "../compiler/compiler.ts";
@@ -10,8 +9,8 @@ export const BuildProject = async (
   flag: string,
   cwd = Deno.cwd(),
   path = "/src/App.svelte",
-) => { // C:\\Users\\Tanner\\Documents\\GitHub\\NOVAS2\\tests\\src\\App.svelte
-  const sveltePath = "https://cdn.skypack.dev/svelte@3.46.4";
+) => {
+  // C:\\Users\\Tanner\\Documents\\GitHub\\NOVAS2\\tests\\src\\App.svelte
   const encoder = new TextEncoder();
   const fullPath = join(cwd, path);
   const memoized: { [key: string]: boolean } = {};
