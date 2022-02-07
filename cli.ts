@@ -2,7 +2,12 @@ import { CreateProject } from "./commands/create.ts";
 import { DevProject } from "./commands/dev.ts";
 import { BuildProject } from "./commands/build.ts";
 
-const command: { [key: string]: boolean } = { "create": true, "dev": true, "build": true, "start": true };
+const command: { [key: string]: boolean } = {
+  "create": true,
+  "dev": true,
+  "build": true,
+  "start": true,
+};
 const { args: Args } = Deno;
 const [cmd, appName, flag] = [Args[0], Args[1], Args[2]];
 
@@ -11,9 +16,9 @@ async function Main(appName: string, flag: string) {
     if (command[cmd]) {
       switch (cmd) {
         case "create":
-          appName ? 
-            await CreateProject(appName, Deno.cwd(), flag) : 
-            Main(`${prompt('Please enter App name: ', 'myApp')}`, flag);
+          appName
+            ? await CreateProject(appName, Deno.cwd(), flag)
+            : Main(`${prompt("Please enter App name: ", "myApp")}`, flag);
           break;
         case "dev":
           DevProject(appName);
@@ -22,14 +27,22 @@ async function Main(appName: string, flag: string) {
           await BuildProject(appName);
           break;
       }
-    } 
-    else if (cmd === "--version" || cmd === "-v") {
-      console.log(`NOVAS 1.0`);
-    }
-    else {
-      console.log(`To create a project, type:` + ` %cNOVAS create ` + `%c[project name]`, "color:#55dac8;", "color:red;");
-      console.log(`To compile a project, type:` + ` %cNOVAS build`, "color:#55dac8;");
-      console.log(`To start a dev server, type:` + ` %cNOVAS dev`, "color:#55dac8;");
+    } else if (cmd === "--version" || cmd === "-v") {
+      console.log(`NOVAS 1.0.0-ahead`);
+    } else {
+      console.log(
+        `To create a project, type:` + ` %cNOVAS create ` + `%c[project name]`,
+        "color:#55dac8;",
+        "color:red;",
+      );
+      console.log(
+        `To compile a project, type:` + ` %cNOVAS build`,
+        "color:#55dac8;",
+      );
+      console.log(
+        `To start a dev server, type:` + ` %cNOVAS dev`,
+        "color:#55dac8;",
+      );
     }
   } catch (error) {
     if (!(error instanceof Deno.errors.NotFound)) {

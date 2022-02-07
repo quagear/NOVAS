@@ -6,10 +6,10 @@ import devServer from "../dev/server.ts";
  * @param flag User flags. -h or --help.
  */
 export const DevProject = (flag: string) => {
-  if (flags['help'][flag]) {
+  if (flags["help"][flag]) {
     console.log(`you requested help (${flag}) with the dev command`);
     return false;
   }
   devServer();
-  return true
-}
+  return true;
+};

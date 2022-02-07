@@ -1,12 +1,14 @@
 // import { readableStreamFromReader } from "https://deno.land/std@0.125.0/streams/conversion.ts";
 import { BuildProject } from "../commands/build.ts";
 import { join } from "https://deno.land/std@0.125.0/path/mod.ts";
-import { Application, send, Router } from 'https://deno.land/x/oak@v9.0.1/mod.ts';
+import {
+  Application,
+  Router,
+  send,
+} from "https://deno.land/x/oak@v9.0.1/mod.ts";
 
 export default async function devServer() {
-
-  const eventTypes: { [key: string]: boolean} = { remove: true, modify: true }; // Other option: create;
-
+  const eventTypes: { [key: string]: boolean } = { remove: true, modify: true }; // Other option: create;
 
   async function webSocketServer() {
     const listener1 = Deno.listen({ port: 80 });
@@ -47,8 +49,8 @@ export default async function devServer() {
       for await (const event of watcher) {
         if (eventTypes[event.kind] && Date.now() - lastMessageSent > 1000) {
           watcher.close();
-          console.log('Compiling...')
-          await BuildProject('');
+          console.log("Compiling...");
+          await BuildProject("");
           socket.send("reload window");
           lastMessageSent = Date.now();
         }
@@ -61,11 +63,11 @@ export default async function devServer() {
   }
 
   webSocketServer();
-  
+
   const port = 3000;
   const app = new Application();
   const router = new Router();
-  
+
   app.use(async (ctx) => {
     const { pathname } = ctx.request.url;
     if (pathname === "/") {
@@ -87,13 +89,11 @@ export default async function devServer() {
     }
   });
 
-
   app.use(router.routes());
-  
-  app.addEventListener('listen', () => {
+
+  app.addEventListener("listen", () => {
     console.log(`🎉 Listening on port ${port}`);
   });
 
   await app.listen({ port });
-
 }

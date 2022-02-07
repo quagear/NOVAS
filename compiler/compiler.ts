@@ -42,6 +42,6 @@ export const compiler = async (file: string) => {
   const denoCompiled = { js: denoImports, ast };
 
   return denoCompiled;
-}
+};
 
 export default denofy;

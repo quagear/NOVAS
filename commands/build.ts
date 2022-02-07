@@ -6,7 +6,11 @@ import boilerplate from "../templates/build.ts";
 import denofy from "../compiler/compiler.ts";
 
 // Function to run when given build command
-export const BuildProject = async (flag: string, cwd = Deno.cwd(), path = '/src/App.svelte') => { // C:\\Users\\Tanner\\Documents\\GitHub\\NOVAS2\\tests\\src\\App.svelte
+export const BuildProject = async (
+  flag: string,
+  cwd = Deno.cwd(),
+  path = "/src/App.svelte",
+) => { // C:\\Users\\Tanner\\Documents\\GitHub\\NOVAS2\\tests\\src\\App.svelte
   const sveltePath = "https://cdn.skypack.dev/svelte@3.46.4";
   const encoder = new TextEncoder();
   const fullPath = join(cwd, path);
@@ -24,7 +28,7 @@ export const BuildProject = async (flag: string, cwd = Deno.cwd(), path = '/src/
     filePath.endsWith(".svelte") ? await handleSvelte() : handleOther();
 
     async function handleSvelte() {
-      const { js, ast } = await compiler(filePath); 
+      const { js, ast } = await compiler(filePath);
       const data = encoder.encode(js);
 
       await ensureFile(join("./build", filePath.replace(cwd, "")) + ".js");
@@ -46,13 +50,12 @@ export const BuildProject = async (flag: string, cwd = Deno.cwd(), path = '/src/
 
     async function handleOther() {
       try {
-      const currentFile = await Deno.readTextFile(filePath);
-      const denofiedFile = await denofy(currentFile, sveltePath);
-      const data = encoder.encode(denofiedFile);
-      await ensureFile("./build" + filePath.replace(cwd, ''));
-      await Deno.writeFile("./build" + filePath.replace(cwd, ''), data);
-     }
-      catch {
+        const currentFile = await Deno.readTextFile(filePath);
+        const denofiedFile = await denofy(currentFile, sveltePath);
+        const data = encoder.encode(denofiedFile);
+        await ensureFile("./build" + filePath.replace(cwd, ""));
+        await Deno.writeFile("./build" + filePath.replace(cwd, ""), data);
+      } catch {
         return;
       }
     }

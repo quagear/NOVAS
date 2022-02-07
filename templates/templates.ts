@@ -1,4 +1,3 @@
-
 export const indexHTML = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +74,8 @@ img {
 </div>
 `;
 
-export const mainJs = `// This is a placeholder for rendering the svelte files after running NOVA build in the root directory.`;
+export const mainJs =
+  `// This is a placeholder for rendering the svelte files after running NOVA build in the root directory.`;
 
 export const vscodeDenoSettings = `{
   "deno.enable": true,
@@ -95,8 +95,8 @@ export const vscodeDenoSettings = `{
   },
 }`;
 
-export const defaultConfigFile =`{
+export const defaultConfigFile = `{
     "generate": "dom",
     "sveltePath": "https://cdn.skypack.dev/svelte@3.46.4",
     "hydratable": true,
-  }` 
+  }`;
