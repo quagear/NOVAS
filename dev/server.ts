@@ -5,7 +5,7 @@ import {
   Application,
   Router,
   send,
-} from "https://deno.land/x/oak@v9.0.1/mod.ts";
+} from "https://deno.land/x/oak@v10.2.0/mod.ts";
 
 export default async function devServer() {
   const eventTypes: { [key: string]: boolean } = { remove: true, modify: true }; // Other option: create;
