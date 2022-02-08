@@ -43,7 +43,7 @@ export async function CreateProject(
       join(appDir, "compileOptions.json"),
     );
     const srcFile = await Deno.create(join(`${appDir}/src`, "App.svelte"));
-    const mainJsFile = await Deno.create(join(`${appDir}/src`, "index.js"));
+    const mainJsFile = await Deno.create(join(`${appDir}/src`, "index.ts"));
 
     indexHtmlFile.write(encoder.encode(indexHTML));
     settings.write(encoder.encode(vscodeDenoSettings));
